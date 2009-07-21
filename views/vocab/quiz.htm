@@ -1,0 +1,13 @@
+{% extends "base.htm" %}
+{% load vocab_extras %}
+
+{% block content %}
+<div class="question">
+	<h3>Question {{ page }}</h3>
+	<div class="definition">{{ def.definition|markdown }}</div>
+	{% for word in words %}
+	<input type="radio" name="word" value="{{ word.id }}">{{ word.word }}</input><br/>
+	{% endfor %}
+	<input type="submit" value="Next" />
+</div>
+{% endblock %}

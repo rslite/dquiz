@@ -5,8 +5,8 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Example:
-    # (r'^dquiz/', include('dquiz.foo.urls')),
+    # Show a quiz - start with a quiz_id and if needed specify the page
+    (r'^quiz/(?P<quiz_id>\d+)/?(?P<page>\d+)?', 'dquiz.vocab.views.quiz'),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:
@@ -14,4 +14,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
+
+	#Static content
+	(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'static'}),
 )
