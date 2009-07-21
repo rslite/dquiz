@@ -1,5 +1,9 @@
-# Django settings for dquiz project.
+# Use this to allow the project to run on any folder
+import os.path
+PROJECT_DIR = os.path.dirname(__file__)
+fp = lambda filename: os.path.join(PROJECT_DIR, filename).replace('\\', '/')
 
+# Django settings for dquiz project.
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -69,7 +73,7 @@ TEMPLATE_DIRS = (
 	# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
 	# Always use forward slashes, even on Windows.
 	# Don't forget to use absolute paths, not relative paths.
-	'E:/dquiz/views/'
+	fp('views'),
 )
 
 INSTALLED_APPS = (

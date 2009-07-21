@@ -18,7 +18,6 @@ def markdown(value):
 
 	def ltgt_repl(match):
 		""" Regex replacer of < and > with italics """
-		print match.group(0)
 		if match.group(0) == '<': return '&lt;<i>'
 		else: return '</i>&gt;'
 

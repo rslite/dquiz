@@ -6,7 +6,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Show a quiz - start with a quiz_id and if needed specify the page
-    (r'^quiz/(?P<quiz_id>\d+)/?(?P<page>\d+)?', 'dquiz.vocab.views.quiz'),
+    (r'^quiz/(?P<quiz_id>\d+)/?(?P<page>\d+)?$', 'dquiz.vocab.views.quiz'),
+    (r'^quiz/(?P<quiz_id>\d+)/?(?P<page>\d+)/(?P<def_id>\d+)/answer$', 'dquiz.vocab.views.answer'),
 
     # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
     # to INSTALLED_APPS to enable admin documentation:

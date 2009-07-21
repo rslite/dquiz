@@ -15,33 +15,47 @@ a
 {
 	float: right;
 	height: 400px;
-	width: 200px;
+	width: 2px;
 }
 
-table 
+.question, .answer
 {
-	border-collapse: collapse;
-}
-
-th, td
-{
-	padding: 2px 10px;
-}
-
-.question
-{
-	width: 500px;
+	background-color: #F8F8F8;
 	height: 300px;
 	margin: auto;
-	background-color: #F8F8F8;
+	width: 500px;
+}
+
+.answer
+{
+	background-color: #F8F8FF;
+	height: 100px;
 }
 
 .definition
 {
 	margin: 10px;
+	line-height: 14pt;
 }
 
 input
 {
 	margin: 4px 5px;
+}
+
+.message
+{
+	height: 30px;
+	text-align: center;
+	width: 100%;
+}
+
+.correct
+{
+	background-color: #E0FFE0;
+}
+
+.incorrect
+{
+	background-color: #FFE0E0;
 }

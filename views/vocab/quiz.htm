@@ -2,12 +2,26 @@
 {% load vocab_extras %}
 
 {% block content %}
-<div class="question">
-	<h3>Question {{ page }}</h3>
-	<div class="definition">{{ def.definition|markdown }}</div>
-	{% for word in words %}
-	<input type="radio" name="word" value="{{ word.id }}">{{ word.word }}</input><br/>
-	{% endfor %}
-	<input type="submit" value="Next" />
-</div>
+<form action="/quiz/{{ quiz_id }}/{{ page }}/{{ definition.id }}/answer" method="POST">
+	{% if answer_data %}
+	<div class="answer">
+		{% if is_good %}
+		<div class="message correct">Answer <strong>{{ sel_answer.word }}</strong> is correct.</div>
+		{% else %}
+		<div class="message incorrect">Answer <strong>{{ sel_answer.word }}</strong> is incorrect.</div>
+		{% endif %}
+		<div>
+			<b>{{ old_def.word.word }}</b>: {{ old_def.definition|markdown }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="question">
+		<div class="definition"><b>Question {{ page }}</b>: {{ definition.definition|markdown }}</div>
+		{% for word in words %}
+		<input type="radio" name="word_id" value="{{ word.id }}" id="answer{{ forloop.counter }}" />
+		<label for="answer{{ forloop.counter }}">{{ word.word }}</label><br/>
+		{% endfor %}
+		<input type="submit" value="Next" />
+	</div>
+</form>
 {% endblock %}

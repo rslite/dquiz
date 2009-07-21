@@ -25,3 +25,12 @@ class Definition(models.Model):
 
 	class Meta:
 		pass
+
+class Answer(models.Model):
+	# Answer given
+	answer = models.ForeignKey(Word)
+	# For which definition
+	definition = models.ForeignKey(Definition)
+
+	def __unicode__(self):
+		return '%s - %s' % (self.answer.word, self.definition.definition)
