@@ -2,7 +2,7 @@ from django.db.models import Max
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from dquiz.vocab.models import Word, Definition, Answer
-import math, random
+import math, random, urllib2
 
 def get_random_item(model, max_id=None):
 	""" Get a random object of the specified model """
@@ -78,3 +78,13 @@ def answer(request, quiz_id, page, def_id):
 
 		# Go to next question
 		return HttpResponseRedirect('/quiz/%s/%d' % (quiz_id, int(page)+1))
+
+def add(request, word):
+	try:
+		res = urllib2.urlopen('http://www.merriam-webster.com/dictionary/' + word)
+	except Exception as e:
+		print e
+		return HttpResponse("Word '%s' not found" % word)
+	data = res.read()
+	res.close()
+	return HttpResponse(data)
