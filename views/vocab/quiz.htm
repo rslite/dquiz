@@ -2,7 +2,7 @@
 {% load vocab_extras %}
 
 {% block content %}
-<form action="/quiz/{{ quiz_id }}/{{ page }}/{{ definition.id }}/answer" method="POST">
+<form action="{% url vocab-answer quiz_id,page,definition.id %}" method="POST">
 	{% if answer_data %}
 	<div class="answer">
 		{% if is_good %}

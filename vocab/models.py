@@ -8,7 +8,7 @@ class Word(models.Model):
 		return self.word
 
 	class Meta:
-		pass
+		ordering = ['word']
 
 class Definition(models.Model):
 	# Defined word

@@ -1,0 +1,23 @@
+{% extends "base.htm" %}
+{% load vocab_extras %}
+
+{% block content %}
+<form action="{% url vocab-add %}" method="POST">
+	Word: <input type="text" name="w" maxlength="100" /><br/>
+	Index: <input type="text" name="i" maxlength="3" /><br/>
+	<input type="submit" value="Add" />
+	{% if texts %}
+	<div class="added">
+		{% for e in texts %}
+		<div>{{ e|markdown }}</div>
+		{% endfor %}
+	</div>
+	<div class="word">
+		<h2>{{ word.word }}</h2>
+		{% for d in defs %}
+		<div>{{ forloop.counter }}. {{ d.definition|markdown }}</div>
+		{% endfor %}
+	</div>
+	{% endif %}
+</form>
+{% endblock %}
